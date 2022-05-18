@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from './Home/Home';
 import Header from './Shared/Header';
 import Register from './Login/Register';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
 
     </Routes>
-    
+    <ToastContainer/>
     </div>
    
 

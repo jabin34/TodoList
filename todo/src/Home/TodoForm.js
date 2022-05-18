@@ -1,12 +1,39 @@
 import React from 'react';
-
-const TodoForm = () => {
+import { toast } from 'react-toastify';
+const TodoForm = ({refetch}) => {
     const addTask =(e)=>{
         e.preventDefault();
      const taskName = e.target.name.value;
      const description = e.target.description.value;
      console.log(taskName,description);
-    }
+  const taskData = {
+     "taskName":taskName,
+      "description": description
+  }
+  fetch('http://localhost:4000/addtask',{
+      method:'post',
+      headers:{
+        'content-type':'application/json',
+      },
+      body:JSON.stringify(taskData)
+  })
+  .then(res=>res.json())
+    .then(data =>{
+      if(data.insertedId)
+      {
+        toast.success(`Task added!!`);
+        e.target.reset();
+        refetch();
+      }
+      else{
+        toast.error(`Failed to add!!`);
+      }
+    })
+}
+  
+      
+    
+    
     return (
         <div>
             <div class="card w-96 bg-base-100 shadow-xl">
