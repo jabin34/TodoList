@@ -1,25 +1,26 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth);
+      
 
-    const loginUser=(e)=>{
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        console.log(email,password);
-        signInWithEmailAndPassword(email,password);
-        navigate("/home");
-    }
+const  createUser = (e) =>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email,password); 
+    createUserWithEmailAndPassword(email, password);
+    navigate("/home");
+}
     return (
         <div>
             <div class="hero min-h-screen bg-base-200">
@@ -30,24 +31,30 @@ const Login = () => {
     </div>
     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div class="card-body">
-          <form onSubmit={loginUser}>
+          <form onSubmit={createUser}>
+          <div class="form-control">
+          <label class="label">
+            <span class="label-text">Name</span>
+          </label>
+          <input type="text" placeholder="name" class="input input-bordered" />
+        </div>
           <div class="form-control">
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <input  name="email" type="text" placeholder="email" class="input input-bordered" />
+          <input type="text" name="email" placeholder="email" class="input input-bordered" />
         </div>
         <div class="form-control">
           <label class="label">
             <span class="label-text">Password</span>
           </label>
-          <input name='password' type="password" placeholder="password" class="input input-bordered" />
+          <input type="password" name="password" placeholder="password" class="input input-bordered" />
           <label class="label">
-           <p className='label-text-alt'>New to this app ? <Link to="/register" class="label-text-alt link link-hover">Register here</Link></p>
+           <p className='label-text-alt'>Already have an account?<Link to="/login" class="label-text-alt link link-hover">Login here</Link></p>
           </label>
         </div>
         <div class="form-control mt-6">
-          <button class="btn btn-primary">Login</button>
+          <button class="btn btn-primary">Register</button>
         </div>
           </form>
         
@@ -59,4 +66,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
