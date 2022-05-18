@@ -70,7 +70,7 @@ console.log(newflag);
       
        
         <td>
-            <button class="btn btn-xs btn-primary text-white m-1" onClick={()=>taskCompleted(_id)}>Completed</button>
+            <button class="btn btn-xs btn-primary text-white m-1" onClick={()=>taskCompleted(_id)}> {flag?"Undo":"Completed"}</button>
             <button class="btn btn-xs btn-error text-white m-1" onClick={()=>deleteList(_id)}>Delete</button>
         </td>
 

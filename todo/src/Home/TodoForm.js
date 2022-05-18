@@ -36,8 +36,8 @@ const TodoForm = ({refetch}) => {
     
     
     return (
-        <div>
-            <div class="card w-96 bg-base-100 shadow-xl">
+        <div className='pt-5 mt-8' >
+            <div class="card md:w-96 bg-base-100 shadow-xl">
   <div class="card-body">
     <h2 class="card-title">Add Your Task here</h2>
     <div>
