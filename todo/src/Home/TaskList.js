@@ -1,9 +1,9 @@
 import React from 'react';
 import Task from './Task';
 
-const TaskList = ({task}) => {
+const TaskList = ({task,refetch}) => {
     return (
-        <div className='grow mx-4'>
+        <div className='grow mx-4 min-w-fit'>
             <h2 className='text-center text-2xl p-3 text-bold'>Your Task</h2>
             <div class="overflow-x-auto">
   <table class="table w-full">
@@ -18,7 +18,7 @@ const TaskList = ({task}) => {
     </thead>
     <tbody>
      
-     {task.map((list,index)=><Task list={list} index={index}/>)}
+     {task.map((list,index)=><Task list={list} index={index} refetch={refetch}/>)}
      
      
      

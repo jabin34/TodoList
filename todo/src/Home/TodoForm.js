@@ -8,7 +8,8 @@ const TodoForm = ({refetch}) => {
      console.log(taskName,description);
   const taskData = {
      "taskName":taskName,
-      "description": description
+      "description": description,
+      "flag":false
   }
   fetch('http://localhost:4000/addtask',{
       method:'post',

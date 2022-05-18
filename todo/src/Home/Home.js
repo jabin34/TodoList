@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <div className='flex  sm:flex-column md:flex-row justify-around g-5 m-3 pt-5'>
            <TodoForm refetch={refetch}/>
-           <TaskList task={lists}  />
+           <TaskList task={lists} refetch={refetch} />
         </div>
     );
 };
